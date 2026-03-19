@@ -1,0 +1,61 @@
+# ===== CI/CD Pipeline for Task Tracker =====
+# This file tells GitHub to automatically deploy your app
+# every time you push code to the 'main' branch.
+
+# 1. NAME - What this workflow is called (shows in GitHub Actions tab)
+name: Deploy Task Tracker to GitHub Pages
+
+# 2. TRIGGER - When should this pipeline run?
+on:
+  push:
+    branches:
+      - main          # Only runs when you push to the 'main' branch
+
+# 3. PERMISSIONS - Allow the workflow to deploy to GitHub Pages
+permissions:
+  contents: read       # Can read your code
+  pages: write         # Can write to GitHub Pages
+  id-token: write      # Needed for secure deployment
+
+# 4. JOBS - The actual steps to perform
+jobs:
+
+  # ----- JOB 1: BUILD -----
+  # Prepares your files for deployment
+  build:
+    runs-on: ubuntu-latest    # Uses a Linux server (free from GitHub)
+
+    steps:
+      # Step 1: Download your code onto the server
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # Think of this as: "git clone my repo onto the build server"
+
+      # Step 2: Package your files for GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Step 3: Upload your files as a deployable package
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'    # '.' means upload everything in the repo
+          # Your HTML, CSS, JS files are all static - no build step needed!
+
+  # ----- JOB 2: DEPLOY -----
+  # Takes the packaged files and publishes them live
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build              # Wait for build job to finish first
+
+    # Tell GitHub this deploys to the 'github-pages' environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # Step 1: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        # This makes your site live at: https://saranya-d04.github.io/task-tracker/
