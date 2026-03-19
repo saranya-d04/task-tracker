@@ -1,0 +1,19 @@
+# ===== What is .gitignore? =====
+# This file tells Git which files/folders to IGNORE (not track).
+# Lines starting with # are comments.
+
+# OS generated files (Windows/Mac create these automatically)
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor config files
+.vscode/
+*.swp
+*.swo
+
+# Node modules (if you ever add npm packages later)
+node_modules/
+
+# Log files
+*.log

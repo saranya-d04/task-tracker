@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 1. charset: tells browser to support all characters (emojis, symbols etc.) -->
+  <meta charset="UTF-8">
+
+  <!-- 2. viewport: makes the page look good on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Task Tracker</title>
+
+  <!-- 3. Link our CSS file for styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 4. Container: wraps everything in a centered box -->
+  <div class="container">
+
+    <!-- 5. App title -->
+    <h1>Task Tracker</h1>
+
+    <!-- 6. Input area: text box + add button side by side -->
+    <div class="input-area">
+      <input id="taskInput" type="text" placeholder="Enter a new task..." autocomplete="off">
+      <button id="addBtn" onclick="addTask()">Add</button>
+    </div>
+
+    <!-- 7. Task counter: shows how many tasks you have -->
+    <p class="task-count" id="taskCount">No tasks yet. Add one above!</p>
+
+    <!-- 8. Task list: tasks will appear here dynamically via JavaScript -->
+    <ul id="taskList"></ul>
+
+    <!-- 9. Clear all button: removes everything at once -->
+    <button class="clear-btn" id="clearBtn" onclick="clearAllTasks()">Clear All</button>
+
+  </div>
+
+  <!-- 10. Link our JavaScript file (always at bottom so HTML loads first) -->
+  <script src="script.js"></script>
+</body>
+</html>
