@@ -28,16 +28,16 @@ jobs:
     steps:
       # Step 1: Download your code onto the server
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         # Think of this as: "git clone my repo onto the build server"
 
       # Step 2: Package your files for GitHub Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       # Step 3: Upload your files as a deployable package
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: '.'    # '.' means upload everything in the repo
           # Your HTML, CSS, JS files are all static - no build step needed!
@@ -57,5 +57,5 @@ jobs:
       # Step 1: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
         # This makes your site live at: https://saranya-d04.github.io/task-tracker/
