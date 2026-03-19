@@ -57,5 +57,5 @@ jobs:
       # Step 1: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
         # This makes your site live at: https://saranya-d04.github.io/task-tracker/
