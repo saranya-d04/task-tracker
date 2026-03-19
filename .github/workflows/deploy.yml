@@ -33,7 +33,7 @@ jobs:
 
       # Step 2: Package your files for GitHub Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v4
 
       # Step 3: Upload your files as a deployable package
       - name: Upload artifact
